@@ -1,5 +1,28 @@
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
+It is a typescript implementation created with:
+```sh
+create-react-app ts-auth-ex --scripts-version=react-scripts-ts
+```
+
+# What is this project?
+
+I got tired of the broken or convoluted methods I was reading about regarding how to manage Firebase authentication within a react app.
+
+This is an opinionated implementation of a react app that demands a user be signed in before presenting a UI. It uses the Google OAuth2 provider but with very little effort you should be able to use any of the Firebase supported OAuth2 providers.
+
+There is no logic in the app other than giving a treatment to the signin gate. This is an attempt to add the least amount of logic/code to support a signin gate.
+
+## Flow
+
+1. User arrives at the site (maybe even a deep path) - save this path to local storage
+2. The routes/Index tries to resolve the firebase user auth
+3. If no user auth then redirect for signin
+4. On redirect result process and let the onAuthStatusChanged pick up the user
+5. On user resolved redirect to original path based on stored path (then remove path from local storage)
+
+# React boilerplate README
+
 Below you will find some information on how to perform common tasks.<br>
 You can find the most recent version of this guide [here](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md).
 
